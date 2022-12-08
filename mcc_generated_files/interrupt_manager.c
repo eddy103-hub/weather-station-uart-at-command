@@ -58,11 +58,7 @@ void  INTERRUPT_Initialize (void)
 void __interrupt() INTERRUPT_InterruptManager (void)
 {
     // interrupt handler
-    if(PIE0bits.CLC1IE == 1 && PIR0bits.CLC1IF == 1)
-    {
-        CLC1_ISR();
-    }
-    else if(PIE9bits.U3TXIE == 1 && PIR9bits.U3TXIF == 1)
+    if(PIE9bits.U3TXIE == 1 && PIR9bits.U3TXIF == 1)
     {
         UART3_TxInterruptHandler();
     }

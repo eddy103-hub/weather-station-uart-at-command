@@ -29,13 +29,15 @@
 #include "at_commander.h"
 #include "sensorHandling.h"
 #include "mcc_generated_files/mcc.h"
-const char my_ap[] = "your SSID";
-const char my_pw[] = "your Password";
+const char my_ap[] = "iPhone13";
+const char my_pw[] = "eddymeshack";
 const char my_ts[] = "pool.ntp.org";
-const char my_ba[] = "your aws endpoint";
-const char my_ci[] = "your DevideID";
+const char my_ba[] = "a3a2c3qx9uoi5k-ats.iot.us-east-2.amazonaws.com";
+const char my_ci[] = "pic32";
 const char ok_res[] = "OK\r\n>";
-static char json[MQTT_PAYLOAD_SIZE]; 
+static char json[MQTT_PAYLOAD_SIZE];
+
+
 
 ATCMD_STATES ATCMD_state = STATE_INIT;
 uint8_t ATCMD_Error_Code = 0;
@@ -114,7 +116,7 @@ void ATCMD_Print(const char *format, ...) {
     size_t len = 0;
     va_list args = {0};
     int ix;
-
+    LED0_Toggle();
     /* Get the variable arguments in va_list */
     va_start(args, format);
 

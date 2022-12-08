@@ -82,7 +82,7 @@ void PIN_MANAGER_Initialize(void)
     ANSELB = 0xE9;
     ANSELE = 0x07;
     ANSELF = 0xF4;
-    ANSELA = 0xE6;
+    ANSELA = 0xE7;
 
     /**
     WPUx registers
@@ -141,15 +141,12 @@ void PIN_MANAGER_Initialize(void)
 	
     I2C1SDAPPS = 0x0A;   //RB2->I2C1:SDA1;    
     RB1PPS = 0x37;   //RB1->I2C1:SCL1;    
-    RF3PPS = 0x01;   //RF3->CLC1:CLC1;    
-    CLCIN0PPS = 0x00;   //RA0->CLC1:CLCIN0;    
     RA3PPS = 0x26;   //RA3->UART3:TX3;    
     RB2PPS = 0x38;   //RB2->I2C1:SDA1;    
     RF0PPS = 0x20;   //RF0->UART1:TX1;    
     U3RXPPS = 0x04;   //RA4->UART3:RX3;    
     U1RXPPS = 0x29;   //RF1->UART1:RX1;    
     I2C1SCLPPS = 0x09;   //RB1->I2C1:SCL1;    
-    T4INPPS = 0x0C;   //RB4->TMR4:T4IN;    
 }
   
 void PIN_MANAGER_IOC(void)

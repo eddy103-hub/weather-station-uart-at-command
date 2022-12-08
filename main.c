@@ -62,9 +62,15 @@ void main(void) {
 
     /*sensor reading init*/
     WeatherStation_initialize();
+    
+    while(SW0_GetValue());
+    while(SW0_GetValue()==0);         
     while (1) {
+        
         ATCMD_Task();
-
+        if(!SW0_GetValue()) {    
+            Reset();
+        }
     }
 }
 /**
