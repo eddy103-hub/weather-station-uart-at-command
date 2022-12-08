@@ -35,7 +35,7 @@ const char my_ts[] = "pool.ntp.org";
 const char my_ba[] = "a3a2c3qx9uoi5k-ats.iot.us-east-2.amazonaws.com";
 const char my_ci[] = "pic32";
 const char ok_res[] = "OK\r\n>";
-static char json[MQTT_PAYLOAD_SIZE];
+ char json[MQTT_PAYLOAD_SIZE];
 
 
 
@@ -45,21 +45,15 @@ uint8_t ATCMD_Error_Code = 0;
 char ATCMD_TransmittBuffer[ATCMD_PRINT_BUFFER_SIZE];
 char ATCMD_ReceiveBuffer[ATCMD_RECEIVE_BUFFER_SIZE];
 
-uint16_t  pubMqtt() { 
+void  createPubMQTTString() {
     uint16_t message = 0;
-    message = sprintf(json,"\"Light\":%u,\"Temp\":%d,\"Press\":%u,\"Humid\":%u,",
-            light_raw,temp_string,press_string,humid_string);
-    return json;
-}
-
-ATCMD_STATES getAtState(void)
-{
-    return ATCMD_state;
-}
-
-void setAtState(ATCMD_STATES state)
-{
-    ATCMD_state = state;
+    int16_t temp = getTemp();
+    uint16_t pres = getPressure();
+    uint16_t humid = getHumidity();
+    uint16_t light = getLightIntensity();
+    
+    message = snprintf(json,MQTT_PAYLOAD_SIZE, "Light:%u,Temp:%d,Press:%u,Humid:%u",
+            light, temp, pres, humid);
 }
 
 void ATCMD_Task(void) {
@@ -98,11 +92,12 @@ void ATCMD_Task(void) {
             break;
 
         case STATE_PUBLISH_CLOUD:
+            createPubMQTTString();
             ATCMD_Print("AT+MQTTPUB=%d,%d,%d,\"%s\",\"%s\"\r\n", MQTT_DUP, MQTT_QOS,
-                    MQTT_RETAIN, MQTT_PUB_TOPIC, MQTT_PAYLOAD);
+                    MQTT_RETAIN, MQTT_PUB_TOPIC, json);
             ATCMD_state = STATE_IDLE;
             break;
-            
+
         case STATE_IDLE:
             break;
 
@@ -147,7 +142,7 @@ void ATCMD_Print(const char *format, ...) {
             return;
         }
     }
- 
+
 }
 
 uint8_t ATCMD_ReadLine(void) {

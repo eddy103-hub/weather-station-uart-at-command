@@ -11,15 +11,31 @@
 
 bool weather_initialized = 0;
 bool label_initial = false;
-int16_t temp_string; // Temperature
-uint16_t press_string; // Pressure
-uint16_t humid_string; // Humidity
-uint16_t light_raw; // Ambient Light
+int16_t i16Temperature;
+uint16_t u16Pressure; 
+uint16_t u16Humidity; 
+uint16_t u16LightIntensity;
 
 /**
   Section: Driver APIs
  */
 
+
+int16_t getTemp(void) {
+    return i16Temperature;
+}
+
+uint16_t getPressure(void) {
+    return u16Pressure;
+}
+
+uint16_t getHumidity(void) {
+    return u16Humidity;
+}
+
+uint16_t getLightIntensity(void) {
+    return u16LightIntensity;
+}
 void WeatherClick_readSensors(void) {
     if (DEFAULT_SENSOR_MODE == BME280_FORCED_MODE) {
         BME280_startForcedSensing();
@@ -28,7 +44,7 @@ void WeatherClick_readSensors(void) {
 }
 
 void AmbientClick_ReadSensor(void) {
-    light_raw = ADCC_GetSingleConversion(adcIn);
+    u16LightIntensity = ADCC_GetSingleConversion(adcIn);
 }
 
 void WeatherStation_initialize(void) {
@@ -57,17 +73,17 @@ void WeatherStation_Print(void) {
     WeatherClick_readSensors();
     AmbientClick_ReadSensor();
 
-    temp_string = (int8_t) BME280_getTemperature();
-    press_string = (uint8_t) BME280_getPressure();
-    humid_string = (uint8_t) BME280_getHumidity();
+    i16Temperature = (int8_t) BME280_getTemperature();
+    u16Pressure = (uint8_t) BME280_getPressure();
+    u16Humidity = (uint8_t) BME280_getHumidity();
 
-    printf("Temp: %i C \n\r", temp_string);
-    printf("Press: %u inHg \n\r", press_string);
-    printf("Humid: %u%% \n\r", humid_string);
-    printf("Light: %u \n\n\r", light_raw);
+    printf("Temp: %i C \n\r", i16Temperature);
+    printf("Press: %u inHg \n\r", u16Pressure);
+    printf("Humid: %u%% \n\r", u16Humidity);
+    printf("Light: %u \n\n\r", u16LightIntensity);
 
     label_initial = true;
-//    __delay_ms(2000); // Hold
+
 }
 
 void timer1Callback(void) {

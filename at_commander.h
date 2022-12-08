@@ -86,9 +86,7 @@ typedef enum {
     STATE_IDLE,
 } ATCMD_STATES;
 
-uint16_t pubMqtt(void);
-ATCMD_STATES getAtState(void);
-void setAtState(ATCMD_STATES state);
+void  createPubMQTTString(void);
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 
