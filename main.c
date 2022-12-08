@@ -59,17 +59,12 @@ void main(void) {
     INTERRUPT_GlobalInterruptEnable();
 
     TMR1_SetInterruptHandler(timer1Callback);
-    
+
     /*sensor reading init*/
     WeatherStation_initialize();
-    while (1) {   
+    while (1) {
         ATCMD_Task();
-//        if(isClcActivated()) {
-//            clearClcState();  
-//            if(getAtState() == STATE_IDLE)
-//                setAtState(STATE_PUBLISH_CLOUD);
-//        }
-       
+
     }
 }
 /**
