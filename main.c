@@ -46,6 +46,7 @@
 #include "sensorHandling.h"
 #include "at_commander.h"
 
+
 /*
                          Main application
  */
