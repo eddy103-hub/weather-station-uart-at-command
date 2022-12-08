@@ -40,8 +40,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define ATCMD_PRINT_BUFFER_SIZE       128
-#define ATCMD_RECEIVE_BUFFER_SIZE     128
+#define ATCMD_PRINT_BUFFER_SIZE       256
+#define ATCMD_RECEIVE_BUFFER_SIZE     256
 
 void ATCMD_Print(const char *format, ...);
 void ATCMD_Task(void);
@@ -74,7 +74,7 @@ int ATCMD_strcon(char a[], char b[]);
 #define MQTT_PAYLOAD          "Test Message"
 #define MQTT_DUP               0
 #define MQTT_QOS               0
-#define MQTT_RETAIN            0
+#define MQTT_RETAIN            1
 #define MQTT_PAYLOAD_SIZE      256
 
 typedef enum {
@@ -83,7 +83,7 @@ typedef enum {
     STATE_WAIT_FOR_AP_CONNECT,
     STATE_CONFIGURE_CLOUD,
     STATE_PUBLISH_CLOUD,
-    STATE_IDLE,
+    STATE_TIMEOUT,
 } ATCMD_STATES;
 
 void  createPubMQTTString(void);

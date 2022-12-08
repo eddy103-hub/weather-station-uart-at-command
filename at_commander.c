@@ -95,10 +95,14 @@ void ATCMD_Task(void) {
             createPubMQTTString();
             ATCMD_Print("AT+MQTTPUB=%d,%d,%d,\"%s\",\"%s\"\r\n", MQTT_DUP, MQTT_QOS,
                     MQTT_RETAIN, MQTT_PUB_TOPIC, json);
-            ATCMD_state = STATE_IDLE;
+            setTimeout(10);
+            ATCMD_state = STATE_TIMEOUT;
             break;
 
-        case STATE_IDLE:
+        case STATE_TIMEOUT:
+            if(isTimeout()){
+                 ATCMD_state = STATE_PUBLISH_CLOUD;
+            }
             break;
 
         default:
@@ -126,12 +130,12 @@ void ATCMD_Print(const char *format, ...) {
     }
 
     for (ix = 0; ix < len; ix++) {
-        while (!UART3_is_tx_ready()); // BLOCKING
+        while (!UART3_is_tx_ready()); 
         UART3_Write(ATCMD_TransmittBuffer[ix]);
     }
 
     for (ix = 0; ix < (len + 5); ix++) {
-        while (!UART3_is_rx_ready()); // BLOCKING
+        while (!UART3_is_rx_ready());
         ATCMD_ReceiveBuffer[ix] = UART3_Read();
 
     }
@@ -150,7 +154,7 @@ uint8_t ATCMD_ReadLine(void) {
     uint8_t byte;
 
     for (ix = 0; ix < ATCMD_RECEIVE_BUFFER_SIZE; ix++) {
-        while (!UART3_is_rx_ready()); // BLOCKING
+        while (!UART3_is_rx_ready()); 
         byte = UART3_Read();
         if (byte == '\n') {
             ATCMD_ReceiveBuffer[ix] = 0;

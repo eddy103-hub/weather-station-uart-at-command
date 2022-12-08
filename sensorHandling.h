@@ -3,7 +3,7 @@
 
 #include <xc.h>
 #include <stdint.h>
-
+#include<stdbool.h>
 /**
   Section: Macro Declarations
  */
@@ -19,13 +19,16 @@
   Section: Weather Click Driver APIs
  */
 
-void WeatherStation_initialize(void);
-void WeatherClick_readSensors(void);
-void WeatherStation_Print(void);
+void initSensors(void);
+void readSensors(void);
+void printSensors(void);
 void timer1Callback(void);
 
 int16_t getTemp(void);
 uint16_t getPressure(void);
 uint16_t getHumidity(void);
 uint16_t getLightIntensity(void);
+void setTimeout(int16_t sec);
+bool isTimeout(void);
+
 #endif

@@ -62,7 +62,7 @@ void main(void) {
     TMR1_SetInterruptHandler(timer1Callback);
 
     /*sensor reading init*/
-    WeatherStation_initialize();
+    initSensors();
     
     while(SW0_GetValue());
     while(SW0_GetValue()==0);         
