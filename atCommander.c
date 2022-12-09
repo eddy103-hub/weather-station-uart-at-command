@@ -26,7 +26,7 @@
  * Revision history: 
  */
 
-#include "at_commander.h"
+#include "atCommander.h"
 #include "sensorHandling.h"
 #include "mcc_generated_files/mcc.h"
 const char my_ap[] = "iPhone13";
@@ -51,9 +51,10 @@ void  createPubMQTTString() {
     uint16_t pres = getPressure();
     uint16_t humid = getHumidity();
     uint16_t light = getLightIntensity();
+    uint16_t gas = getC0Sensor();
     
-    message = snprintf(json,MQTT_PAYLOAD_SIZE, "Light:%u,Temp:%d,Press:%u,Humid:%u",
-            light, temp, pres, humid);
+    message = snprintf(json,MQTT_PAYLOAD_SIZE, "Light:%u,Temp:%d,Press:%u,Humid:%u,Gas:%u",
+            light, temp, pres, humid,gas);
 }
 
 void ATCMD_Task(void) {

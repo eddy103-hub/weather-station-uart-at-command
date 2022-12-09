@@ -9,13 +9,11 @@
   Section: Variable Definitions
  */
 
-bool weather_initialized = 0;
-bool label_initial = false;
 int16_t i16Temperature;
 uint16_t u16Pressure;
 uint16_t u16Humidity;
 uint16_t u16LightIntensity;
-
+uint16_t u16COsensor;
 int16_t i16myTime = 0;
 bool bMyTimeoutFlag = false;
 
@@ -40,6 +38,9 @@ uint16_t getLightIntensity(void) {
     return u16LightIntensity;
 }
 
+uint16_t getC0Sensor(void)  {
+    return u16COsensor;
+}
 void readSensors(void) {
     if (DEFAULT_SENSOR_MODE == BME280_FORCED_MODE) {
         BME280_startForcedSensing();
@@ -47,8 +48,12 @@ void readSensors(void) {
     BME280_readMeasurements();
 }
 
-void AmbientClick_ReadSensor(void) {
+void readAmbientSensor(void) {
     u16LightIntensity = ADCC_GetSingleConversion(adcIn);
+}
+
+void readCOSensor(void) {
+    u16COsensor = ADCC_GetSingleConversion(adcCo);
 }
 
 void initSensors(void) {
@@ -60,26 +65,23 @@ void initSensors(void) {
     BME280_ctrl_meas(BME280_OVERSAMP_X1, BME280_OVERSAMP_X1, BME280_FORCED_MODE);
     BME280_ctrl_hum(BME280_OVERSAMP_X1);
     BME280_initializeSensor();
-    weather_initialized = 1;
 }
 
 void printSensors(void) {
-
-    if (label_initial == true) {
-    }
+    
     readSensors();
-    AmbientClick_ReadSensor();
+    readAmbientSensor();
+    readCOSensor();
 
-    i16Temperature = (int8_t) BME280_getTemperature();
-    u16Pressure = (uint8_t) BME280_getPressure();
-    u16Humidity = (uint8_t) BME280_getHumidity();
+    i16Temperature = (int16_t) BME280_getTemperature();
+    u16Pressure = (uint16_t) BME280_getPressure();
+    u16Humidity = (uint16_t) BME280_getHumidity();
 
     printf("Temp: %i C \n\r", i16Temperature);
     printf("Press: %u inHg \n\r", u16Pressure);
     printf("Humid: %u%% \n\r", u16Humidity);
     printf("Light: %u \n\n\r", u16LightIntensity);
-
-    label_initial = true;
+    printf("CO sensor:%u\n\r",u16COsensor);
 
 }
 

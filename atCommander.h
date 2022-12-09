@@ -28,9 +28,8 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef PARSER_H
-#define	PARSER_H
-
+#ifndef _ATCOMMANDER_H
+#define	_ATCOMMANDER_H
 
 #include <stdarg.h>
 #include <stdbool.h>

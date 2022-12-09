@@ -89,6 +89,7 @@ typedef __uint24 uint24_t;
 typedef enum
 {
     adcIn =  0x1,
+    adcCo =  0x2,
     channel_VSS =  0x3B,
     channel_Temp =  0x3C,
     channel_DAC1 =  0x3D,

@@ -26,7 +26,7 @@
       </logicalFolder>
       <itemPath>bme280.h</itemPath>
       <itemPath>sensorHandling.h</itemPath>
-      <itemPath>at_commander.h</itemPath>
+      <itemPath>atCommander.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -62,7 +62,7 @@
       <itemPath>main.c</itemPath>
       <itemPath>bme280.c</itemPath>
       <itemPath>sensorHandling.c</itemPath>
-      <itemPath>at_commander.c</itemPath>
+      <itemPath>atCommander.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
