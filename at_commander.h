@@ -38,43 +38,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "constants.h"
 
-#define ATCMD_PRINT_BUFFER_SIZE       256
-#define ATCMD_RECEIVE_BUFFER_SIZE     256
 
 void ATCMD_Print(const char *format, ...);
 void ATCMD_Task(void);
 uint8_t ATCMD_ReadLine(void);
 int ATCMD_strcon(char a[], char b[]);
-
-#define ID_SSID                 1
-#define ID_SEC_TYPE             2
-#define ID_CREDENTIALS          3
-#define ID_CHANNEL              4
-#define ID_NTP_SVR              12
-#define ID_NTP_STATIC           13
-
-#define PAR_SEC_TYPE_WPA2       3
-#define PAR_ANY_CHANNEL         255
-#define PAR_NTP_STATIC          1
-#define PAR_USE_CONFIGURATION   1
-
-#define ID_MQTT_BROKER_ADDR     1
-#define ID_MQTT_BROKER_PORT     2
-#define ID_MQTT_CLIENT_ID       3
-#define ID_MQTT_USERNAME        4
-#define ID_MQTT_TLS_CONF_IDX    7
-
-#define MQTT_BROKER_PORT        8883
-#define MQTT_START_CONNECTION   1
-
-#define MQTT_RCLEAN             1
-#define MQTT_PUB_TOPIC        "test/Topic"
-#define MQTT_PAYLOAD          "Test Message"
-#define MQTT_DUP               0
-#define MQTT_QOS               0
-#define MQTT_RETAIN            1
-#define MQTT_PAYLOAD_SIZE      256
 
 typedef enum {
     STATE_INIT,

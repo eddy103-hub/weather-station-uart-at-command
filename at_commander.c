@@ -26,8 +26,8 @@
  * Revision history: 
  */
 
-#include "atCommander.h"
-#include "sensorHandling.h"
+#include "at_commander.h"
+#include "sensor_handling.h"
 #include "mcc_generated_files/mcc.h"
 const char my_ap[] = "iPhone13";
 const char my_pw[] = "eddymeshack";
@@ -53,7 +53,7 @@ void  createPubMQTTString() {
     uint16_t light = getLightIntensity();
     uint16_t gas = getC0Sensor();
     
-    message = snprintf(json,MQTT_PAYLOAD_SIZE, "Light:%u,Temp:%d,Press:%u,Humid:%u,Gas:%u",
+    message = snprintf(json,MQTT_PAYLOAD_SIZE, "{\\\"Light\\\":%u,\\\"Temp\\\":%d,\\\"Press\\\":%u,\\\"Humid\\\":%u,\\\"Gas\\\":%u}",
             light, temp, pres, humid,gas);
 }
 
@@ -131,12 +131,23 @@ void ATCMD_Print(const char *format, ...) {
     }
 
     for (ix = 0; ix < len; ix++) {
-        while (!UART3_is_tx_ready()); 
+        setTimeout(2);
+        while (!UART3_is_tx_ready()) {
+            if(isTimeout()) {
+                return;
+            }
+        }
         UART3_Write(ATCMD_TransmittBuffer[ix]);
     }
 
     for (ix = 0; ix < (len + 5); ix++) {
-        while (!UART3_is_rx_ready());
+        setTimeout(2);
+        while (!UART3_is_rx_ready()) {
+            if(isTimeout()) {
+                return;
+            }
+        }
+        
         ATCMD_ReceiveBuffer[ix] = UART3_Read();
 
     }
@@ -155,7 +166,13 @@ uint8_t ATCMD_ReadLine(void) {
     uint8_t byte;
 
     for (ix = 0; ix < ATCMD_RECEIVE_BUFFER_SIZE; ix++) {
-        while (!UART3_is_rx_ready()); 
+        
+        setTimeout(2);
+        while (!UART3_is_rx_ready()) {
+            if(isTimeout()) {
+                return 0;
+            }
+        }
         byte = UART3_Read();
         if (byte == '\n') {
             ATCMD_ReceiveBuffer[ix] = 0;

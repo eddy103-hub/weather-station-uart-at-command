@@ -43,8 +43,8 @@
 
 #include "mcc_generated_files/mcc.h"
 #include "bme280.h"
-#include "sensorHandling.h"
-#include "atCommander.h"
+#include "sensor_handling.h"
+#include "at_commander.h"
 
 
 /*

@@ -1,7 +1,7 @@
 #include <xc.h>
-#include "sensorHandling.h"
+#include "sensor_handling.h"
 #include "bme280.h"
-#include<stdbool.h>
+
 #include "mcc_generated_files/mcc.h"
 
 
@@ -38,9 +38,10 @@ uint16_t getLightIntensity(void) {
     return u16LightIntensity;
 }
 
-uint16_t getC0Sensor(void)  {
+uint16_t getC0Sensor(void) {
     return u16COsensor;
 }
+
 void readSensors(void) {
     if (DEFAULT_SENSOR_MODE == BME280_FORCED_MODE) {
         BME280_startForcedSensing();
@@ -68,7 +69,7 @@ void initSensors(void) {
 }
 
 void printSensors(void) {
-    
+
     readSensors();
     readAmbientSensor();
     readCOSensor();
@@ -81,7 +82,7 @@ void printSensors(void) {
     printf("Press: %u inHg \n\r", u16Pressure);
     printf("Humid: %u%% \n\r", u16Humidity);
     printf("Light: %u \n\n\r", u16LightIntensity);
-    printf("CO sensor:%u\n\r",u16COsensor);
+    printf("CO sensor:%u\n\r", u16COsensor);
 
 }
 
