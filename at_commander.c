@@ -35,7 +35,7 @@ const char my_ts[] = "pool.ntp.org";
 const char my_ba[] = "a3a2c3qx9uoi5k-ats.iot.us-east-2.amazonaws.com";
 const char my_ci[] = "pic32";
 const char ok_res[] = "OK\r\n>";
- char json[MQTT_PAYLOAD_SIZE];
+char json[MQTT_PAYLOAD_SIZE];
 
 
 
@@ -60,6 +60,7 @@ void  createPubMQTTString() {
 void ATCMD_Task(void) {
     switch (ATCMD_state) {
         case STATE_INIT:
+            ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
             ATCMD_Print("AT+WSTAC=%d,\"%s\"\r\n", ID_SSID, my_ap);
             ATCMD_Print("AT+WSTAC=%d,%d\r\n", ID_SEC_TYPE, PAR_SEC_TYPE_WPA2);
             ATCMD_Print("AT+WSTAC=%d,\"%s\"\r\n", ID_CREDENTIALS, my_pw);
@@ -70,6 +71,7 @@ void ATCMD_Task(void) {
             break;
 
         case STATE_START_WLAN:
+            ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
             ATCMD_Print("AT+WSTA=%d\r\n", PAR_USE_CONFIGURATION);
             ATCMD_ReadLine();
             ATCMD_ReadLine();
@@ -77,6 +79,7 @@ void ATCMD_Task(void) {
             break;
 
         case STATE_WAIT_FOR_AP_CONNECT:
+            ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
             ATCMD_Print("AT+WSTA\r\n");
             ATCMD_ReadLine();
             if (ATCMD_strcon(ATCMD_ReceiveBuffer, "+WSTALD\r\n") != 1) {
@@ -85,6 +88,7 @@ void ATCMD_Task(void) {
             break;
 
         case STATE_CONFIGURE_CLOUD:
+            ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
             ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_BROKER_ADDR, my_ba);
             ATCMD_Print("AT+MQTTC=%d,%d\r\n", ID_MQTT_BROKER_PORT, MQTT_BROKER_PORT);
             ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_CLIENT_ID, my_ci);
@@ -94,6 +98,7 @@ void ATCMD_Task(void) {
 
         case STATE_PUBLISH_CLOUD:
             createPubMQTTString();
+            ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
             ATCMD_Print("AT+MQTTPUB=%d,%d,%d,\"%s\",\"%s\"\r\n", MQTT_DUP, MQTT_QOS,
                     MQTT_RETAIN, MQTT_PUB_TOPIC, json);
             setTimeout(10);
