@@ -32,23 +32,23 @@
 ### Oscillator set up
 ![image](https://user-images.githubusercontent.com/66494140/210337697-29d7a107-b246-49b3-b573-4947f21eca07.png)
 
-### ADCC set up
+### ADCC Set Up
 ![image](https://user-images.githubusercontent.com/66494140/210337668-b13b7690-e8e0-40d3-895a-c9ecf77ab980.png)
-### Timer1 set up
+### Timer1 Set Up
 ![image](https://user-images.githubusercontent.com/66494140/210337778-b18e8f7c-ffbd-4bf1-addb-f6c358beff75.png)
-### UART1 set up
+### UART1 Set Up
 ![image](https://user-images.githubusercontent.com/66494140/210337859-0c139426-2f23-439e-b992-404f27201dd3.png)
-### UART3 set up
+### UART3 Set Up
 ![image](https://user-images.githubusercontent.com/66494140/210337936-d7841e0a-5574-4c10-b0b4-da914ea7da38.png)
 ### Pin Connection Table
 ![image](https://user-images.githubusercontent.com/66494140/210344562-c629105c-9ec4-4f35-bcca-1448a7f449d8.png)
 
-## Amazon AWS set up
+## Amazon AWS Set Up
 ![image](https://user-images.githubusercontent.com/66494140/210338429-54cb1eb5-d3af-43db-ab1f-d44d8d9d2a9e.png)
 # Implementation and Testing
 ![image](https://user-images.githubusercontent.com/66494140/210340002-3b21c62e-c6f4-4c0a-b19a-46841843405b.png)
 
-### MQTT client test
+### MQTT Client Test
 ![image](https://user-images.githubusercontent.com/66494140/210338515-3b11a6a6-3416-482a-96b7-5d492f3cff08.png)
 ### Amazon AWS Quicksight Dashboard
 ![image](https://user-images.githubusercontent.com/66494140/210338657-12f9d23c-9cf5-49f7-b9b1-addd42a00e81.png)
