@@ -4,17 +4,7 @@
 #include <xc.h>
 #include <stdint.h>
 #include<stdbool.h>
-/**
-  Section: Macro Declarations
- */
-
-#define DEFAULT_STANDBY_TIME    BME280_STANDBY_HALFMS
-#define DEFAULT_FILTER_COEFF    BME280_FILTER_COEFF_OFF
-#define DEFAULT_TEMP_OSRS       BME280_OVERSAMP_X1
-#define DEFAULT_PRESS_OSRS      BME280_OVERSAMP_X1
-#define DEFAULT_HUM_OSRS        BME280_OVERSAMP_X1
-#define DEFAULT_SENSOR_MODE     BME280_FORCED_MODE
-
+#include "constants.h"
 /**
   Section: Sensor Functions
  */

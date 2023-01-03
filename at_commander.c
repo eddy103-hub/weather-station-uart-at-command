@@ -45,16 +45,16 @@ uint8_t ATCMD_Error_Code = 0;
 char ATCMD_TransmittBuffer[ATCMD_PRINT_BUFFER_SIZE];
 char ATCMD_ReceiveBuffer[ATCMD_RECEIVE_BUFFER_SIZE];
 
-void  createPubMQTTString() {
+void createPubMQTTString() {
     uint16_t message = 0;
     int16_t temp = getTemp();
     uint16_t pres = getPressure();
     uint16_t humid = getHumidity();
     uint16_t light = getLightIntensity();
     uint16_t gas = getC0Sensor();
-    
-    message = snprintf(json,MQTT_PAYLOAD_SIZE, "{\\\"Light\\\":%u,\\\"Temp\\\":%d,\\\"Press\\\":%u,\\\"Humid\\\":%u,\\\"Gas\\\":%u}",
-            light, temp, pres, humid,gas);
+
+    message = snprintf(json, MQTT_PAYLOAD_SIZE, "{\\\"Light\\\":%u,\\\"Temp\\\":%d,\\\"Press\\\":%u,\\\"Humid\\\":%u,\\\"Gas\\\":%u}",
+            light, temp, pres, humid, gas);
 }
 
 void ATCMD_Task(void) {
@@ -106,8 +106,8 @@ void ATCMD_Task(void) {
             break;
 
         case STATE_TIMEOUT:
-            if(isTimeout()){
-                 ATCMD_state = STATE_PUBLISH_CLOUD;
+            if (isTimeout()) {
+                ATCMD_state = STATE_PUBLISH_CLOUD;
             }
             break;
 
@@ -138,7 +138,7 @@ void ATCMD_Print(const char *format, ...) {
     for (ix = 0; ix < len; ix++) {
         setTimeout(2);
         while (!UART3_is_tx_ready()) {
-            if(isTimeout()) {
+            if (isTimeout()) {
                 return;
             }
         }
@@ -148,11 +148,11 @@ void ATCMD_Print(const char *format, ...) {
     for (ix = 0; ix < (len + 5); ix++) {
         setTimeout(2);
         while (!UART3_is_rx_ready()) {
-            if(isTimeout()) {
+            if (isTimeout()) {
                 return;
             }
         }
-        
+
         ATCMD_ReceiveBuffer[ix] = UART3_Read();
 
     }
@@ -171,10 +171,10 @@ uint8_t ATCMD_ReadLine(void) {
     uint8_t byte;
 
     for (ix = 0; ix < ATCMD_RECEIVE_BUFFER_SIZE; ix++) {
-        
+
         setTimeout(2);
         while (!UART3_is_rx_ready()) {
-            if(isTimeout()) {
+            if (isTimeout()) {
                 return 0;
             }
         }

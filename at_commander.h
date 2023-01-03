@@ -55,7 +55,7 @@ typedef enum {
     STATE_TIMEOUT,
 } ATCMD_STATES;
 
-void  createPubMQTTString(void);
+void createPubMQTTString(void);
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 

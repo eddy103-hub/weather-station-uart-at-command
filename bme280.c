@@ -11,7 +11,6 @@
 #include "mcc_generated_files/examples/i2c1_master_example.h"
 #include <stdio.h>
 
-
 /**
   Section: Variable Definitions
  */
@@ -26,7 +25,6 @@ typedef union {
     uint8_t ctrlMeasReg;
 } bme280_ctrl_meas_t;
 
-
 typedef union {
 
     struct {
@@ -36,7 +34,6 @@ typedef union {
     };
     uint8_t configReg;
 } bme280_config_t;
-
 
 typedef struct {
     uint16_t dig_T1;
@@ -65,24 +62,23 @@ bme280_ctrl_meas_t bme280_ctrl_meas;
 bme280_calibration_param_t calibParam;
 long adc_T, adc_H, adc_P, t_fine;
 
-
 uint8_t BME280_getID(void) {
     return I2C1_Read1ByteRegister(BME280_ADDR, BME280_ID_REG);
 }
 
 void BME280_reset(void) {
-    
+
     I2C1_Write1ByteRegister(BME280_ADDR, BME280_RESET_REG, BME280_SOFT_RESET);
 }
 
 void BME280_sleep(void) {
     bme280_ctrl_meas.mode = BME280_SLEEP_MODE;
     I2C1_Write1ByteRegister(BME280_ADDR, BME280_CTRL_MEAS_REG, bme280_ctrl_meas.ctrlMeasReg);
-    
+
 }
 
 void BME280_readFactoryCalibrationParams(void) {
-uint8_t paramBuff[24];
+    uint8_t paramBuff[24];
     I2C1_ReadDataBlock(BME280_ADDR, BME280_CALIB_DT1_LSB_REG, paramBuff, 24);
     calibParam.dig_T1 = (((uint16_t) paramBuff[1]) << 8) + paramBuff[0];
     calibParam.dig_T2 = (((int) paramBuff[3]) << 8) + paramBuff[2];
@@ -122,22 +118,20 @@ void BME280_ctrl_hum(uint8_t osrs_H) {
     bme280_ctrl_hum = osrs_H; // Set oversampling humidity;
 }
 
-void BME280_initializeSensor(void) {    
+void BME280_initializeSensor(void) {
     I2C1_Write1ByteRegister(BME280_ADDR, BME280_CONFIG_REG, bme280_config.configReg);
     I2C1_Write1ByteRegister(BME280_ADDR, BME280_CTRL_HUM_REG, bme280_ctrl_hum);
     I2C1_Write1ByteRegister(BME280_ADDR, BME280_CTRL_MEAS_REG, bme280_ctrl_meas.ctrlMeasReg);
-    
+
 }
 
-
-void BME280_startForcedSensing(void)
-{
+void BME280_startForcedSensing(void) {
     bme280_ctrl_meas.mode = BME280_FORCED_MODE;
     I2C1_Write1ByteRegister(BME280_ADDR, BME280_CTRL_MEAS_REG, bme280_ctrl_meas.ctrlMeasReg);
 }
 
 void BME280_readMeasurements(void) {
-    
+
     uint8_t sensorData[BME280_DATA_FRAME_SIZE];
 
     I2C1_ReadDataBlock(BME280_ADDR, BME280_PRESS_MSB_REG, sensorData, BME280_DATA_FRAME_SIZE);
@@ -154,8 +148,6 @@ void BME280_readMeasurements(void) {
             ((uint32_t) sensorData[BME280_PRESS_XLSB] >> 4));
 }
 
-
-
 float BME280_getTemperature(void) {
     float temperature = (float) BME280_compensateTemperature() / 100;
     return temperature;
@@ -163,7 +155,7 @@ float BME280_getTemperature(void) {
 
 float BME280_getPressure(void) {
     float pressure = (float) BME280_compensatePressure() / 1000;
-    pressure = pressure * 0.295301; 
+    pressure = pressure * 0.295301;
     return pressure;
 }
 
@@ -191,7 +183,7 @@ static long BME280_compensateTemperature(void) {
  * Returns pressure in Pa as unsigned 32 bit integer. 
  * Output value of "96386" equals 96386 Pa = 96.386 kPa 
  */
- uint32_t BME280_compensatePressure(void) {
+uint32_t BME280_compensatePressure(void) {
     long pressV1, pressV2;
     uint32_t p;
 
@@ -204,7 +196,6 @@ static long BME280_compensateTemperature(void) {
     pressV1 = ((((32768 + pressV1))*((long) calibParam.dig_P1)) >> 15);
 
     if (pressV1 == 0) {
-        // avoid exception caused by division by zero
         return 0;
     }
 
