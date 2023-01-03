@@ -26,10 +26,10 @@
 
 ![image](https://user-images.githubusercontent.com/66494140/210336283-87fa7e15-3a4a-4cf5-b72d-053c7d363e12.png)
 
-# Project Set up
+# Project Set Up
 ![image](https://user-images.githubusercontent.com/66494140/210337188-ab79ea28-23ab-4905-aa64-39d6da203ac9.png)
 ## MCC Settings:
-### Oscillator set up
+### Oscillator Set Up
 ![image](https://user-images.githubusercontent.com/66494140/210337697-29d7a107-b246-49b3-b573-4947f21eca07.png)
 
 ### ADCC Set Up
