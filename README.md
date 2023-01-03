@@ -4,6 +4,8 @@
   * [PIC18F57Q43 Data Sheet](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/PIC18F27-47-57Q43-Data-Sheet-40002147F.pdf)
   * [WFI32-IoT Board User's Guide](https://ww1.microchip.com/downloads/aemDocuments/documents/WSG/ProductDocuments/UserGuides/EV36W50A-WFI32-IoT-Board-Users-Guide-DS50003262.pdf)
   * [Curiosity Nano Base for Click boards Hardware User Guide](https://ww1.microchip.com/downloads/en/DeviceDoc/Curiosity-Nano-Base-for-Click-boards-User-Guide-50002839B.pdf)
+   * [AT Command Reference](https://github.com/MicrochipTech/PIC32MZW1_AnyCloud/blob/main/doc/ATCommandReference.pdf)
+   * [Cloud Set Up Procedure](https://github.com/MicrochipTech/PIC32MZW1_AnyCloud/blob/main/doc/CloudSetupProcedure.pdf)
 
 # Software Used
  * [MPLAB® X IDE v6.00](https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide) or newer
