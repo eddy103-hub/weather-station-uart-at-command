@@ -65,7 +65,8 @@ void main(void) {
     initSensors();
     
     while(SW0_GetValue());
-    while(SW0_GetValue()==0);         
+    while(SW0_GetValue()==0);   
+    
     while (1) {
         
         ATCMD_Task();

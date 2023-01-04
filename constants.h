@@ -15,6 +15,7 @@ extern "C" {
       Section: BME280 Macro Declarations
      */
 
+    
     // Device Information
 #define BME280_ADDR     			0x76
 #define BME280_CHIP_ID  			0x60
