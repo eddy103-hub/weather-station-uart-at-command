@@ -23,8 +23,7 @@
 * [CO Click](https://www.mikroe.com/co-click)
 
 # Project Overview
-
-![image](https://user-images.githubusercontent.com/66494140/210336283-87fa7e15-3a4a-4cf5-b72d-053c7d363e12.png)
+![image](https://user-images.githubusercontent.com/66494140/210653101-183635bc-77fd-4552-836f-0da1a8c2038a.png)
 
 # Project Set Up
 ![image](https://user-images.githubusercontent.com/66494140/210337188-ab79ea28-23ab-4905-aa64-39d6da203ac9.png)
@@ -41,7 +40,7 @@
 ### UART3 Set Up
 ![image](https://user-images.githubusercontent.com/66494140/210337936-d7841e0a-5574-4c10-b0b4-da914ea7da38.png)
 ### Pinout - Diagram
-![image](https://user-images.githubusercontent.com/66494140/210616702-1e25ffd4-b040-41ef-bbf5-b2ab95dfe218.png)
+![image](https://user-images.githubusercontent.com/66494140/210652519-d1f53080-9e12-469d-b56a-3f7c207057f9.png)
 
 ## Amazon AWS Set Up
 ![image](https://user-images.githubusercontent.com/66494140/210338429-54cb1eb5-d3af-43db-ab1f-d44d8d9d2a9e.png)
