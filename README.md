@@ -43,7 +43,8 @@
 ![image](https://user-images.githubusercontent.com/66494140/210652519-d1f53080-9e12-469d-b56a-3f7c207057f9.png)
 
 ## Amazon AWS Set Up
-![image](https://user-images.githubusercontent.com/66494140/210338429-54cb1eb5-d3af-43db-ab1f-d44d8d9d2a9e.png)
+![image](https://user-images.githubusercontent.com/66494140/210655697-26178cf9-974a-4366-b12b-8cf3277add90.png)
+
 # Implementation and Testing
 ![image](https://user-images.githubusercontent.com/66494140/210340002-3b21c62e-c6f4-4c0a-b19a-46841843405b.png)
 
