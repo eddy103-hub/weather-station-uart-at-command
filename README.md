@@ -23,7 +23,7 @@
 * [CO Click](https://www.mikroe.com/co-click)
 
 # Project Overview
-![image](https://user-images.githubusercontent.com/66494140/210653101-183635bc-77fd-4552-836f-0da1a8c2038a.png)
+![image](https://user-images.githubusercontent.com/66494140/210655876-f0e6b657-787c-4bc1-b3d4-0e78aff685ef.png)
 
 # Project Set Up
 ![image](https://user-images.githubusercontent.com/66494140/210337188-ab79ea28-23ab-4905-aa64-39d6da203ac9.png)
