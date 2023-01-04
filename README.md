@@ -40,8 +40,9 @@
 ![image](https://user-images.githubusercontent.com/66494140/210337859-0c139426-2f23-439e-b992-404f27201dd3.png)
 ### UART3 Set Up
 ![image](https://user-images.githubusercontent.com/66494140/210337936-d7841e0a-5574-4c10-b0b4-da914ea7da38.png)
-### Pin Connection Table
-![image](https://user-images.githubusercontent.com/66494140/210344562-c629105c-9ec4-4f35-bcca-1448a7f449d8.png)
+### Pinout - Diagram
+![image](https://user-images.githubusercontent.com/66494140/210550827-6ffb4bfe-5a41-420f-8486-db663682f3ef.png)
+
 
 ## Amazon AWS Set Up
 ![image](https://user-images.githubusercontent.com/66494140/210338429-54cb1eb5-d3af-43db-ab1f-d44d8d9d2a9e.png)
