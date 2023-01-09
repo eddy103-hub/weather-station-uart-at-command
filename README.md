@@ -12,7 +12,8 @@
  * [MPLAB® XC8 v2.36](https://www.microchip.com/en-us/tools-resources/develop/mplab-xc-compilers/downloads-documentation#XC8) or newer
  * Microchip PIC18F-Q Series Device Support (1.13.211) or newer (https://packs.download.microchip.com/)
  * [Tera Term](https://www.heise.de/download/product/tera-term-51776) or any terminal emulator
- 
+ * [WFI32-IoT Code](https://github.com/MicrochipTech/PIC32MZW1_AnyCloud)
+ * Older versions of the software used can be downloaded from the [MPLAB® Development Ecosystem Download Archive](https://www.microchip.com/en-us/tools-resources/archives/mplab-ecosystem)
  
 # Hardware Used
 * [PIC18F57Q43 Curiosity Nano Evaluation Kit](https://www.microchip.com/en-us/development-tool/DM164150)
